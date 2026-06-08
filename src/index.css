@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-apple-bg: #FFFFFF;
+  --color-apple-text: #1D1D1F;
+  --color-apple-blue: #0071E3;
+  --color-brand-navy: #0d2166;
+  --color-apple-grey: #F5F5F7;
+}
+
+@layer base {
+  body {
+    @apply bg-apple-bg text-apple-text font-sans antialiased selection:bg-brand-navy/20;
+  }
+}
+
+@layer components {
+  .apple-button-primary {
+    @apply bg-brand-navy text-white px-6 py-3 rounded-full font-medium transition-all hover:bg-brand-navy/90 active:scale-95 shadow-lg shadow-brand-navy/10;
+  }
+  .apple-button-secondary {
+    @apply bg-transparent text-brand-navy border border-brand-navy px-6 py-3 rounded-full font-medium transition-all hover:bg-brand-navy hover:text-white active:scale-95;
+  }
+  .glass-nav {
+    @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50;
+  }
+}
