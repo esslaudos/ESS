@@ -1,3 +1,5 @@
+import heroImage from '../assets/images/hero-image.jpg';
+
 import { motion } from 'motion/react';
 import { CONTACT_INFO } from '../constants/contact';
 
@@ -67,8 +69,7 @@ export default function Hero() {
             className="relative aspect-[4/3] w-full flex items-center justify-center group"
           >
             <img 
-              src="/src/assets/images/hero-image.jpg" 
-              alt="Technical Engineering View" 
+              src={heroImage}  alt="Hero Image"
               className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
               onError={(e) => {
