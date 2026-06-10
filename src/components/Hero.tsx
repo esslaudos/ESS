@@ -1,3 +1,5 @@
+import heroImage from '../assets/images/hero-image.jpg';
+
 import { motion } from 'motion/react';
 import { CONTACT_INFO } from '../constants/contact';
 
@@ -44,16 +46,16 @@ export default function Hero() {
               className="mt-12 flex flex-col sm:flex-row gap-4"
             >
               <a 
-                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')}
+                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um especialista sobre serviços de engenharia.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="apple-button-primary flex items-center justify-center text-center text-lg"
+                className="apple-button-primary flex items-center justify-center text-lg"
               >
                 Falar com Especialista (WhatsApp)
               </a>
               <button 
                 onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
-                className="apple-button-secondary flex items-center justify-center text-center text-lg"
+                className="apple-button-secondary flex items-center justify-center text-lg"
               >
                 Nossos Serviços
               </button>
@@ -67,8 +69,7 @@ export default function Hero() {
             className="relative aspect-[4/3] w-full flex items-center justify-center group"
           >
             <img 
-              src="/src/assets/images/hero-image.jpg" 
-              alt="Technical Engineering View" 
+              src={heroImage}  alt="Hero Image"
               className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
               onError={(e) => {
