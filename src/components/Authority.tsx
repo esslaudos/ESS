@@ -1,8 +1,3 @@
-import creaLogo from '../assets/images/regenerated_image_1778592615753.png';
-import abntLogo from '../assets/images/regenerated_image_1778592616938.png';
-import nr12Logo from '../assets/images/regenerated_image_1778592614220.png';
-import engLogo from '../assets/images/regenerated_image_1778592615201.png';
-
 import { ShieldCheck, FileCheck, HardHat, Cpu } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -25,7 +20,8 @@ export default function Authority() {
             <div className="flex flex-col items-center text-center group">
               <div className="w-28 h-28 md:w-36 md:h-36 bg-white rounded-full flex items-center justify-center mb-3 border border-gray-100 group-hover:border-brand-navy transition-all duration-500 p-6 shadow-sm group-hover:shadow-md overflow-hidden">
                 <img 
-                 src={creaLogo} alt="CREA Logo" 
+                  src="/src/assets/images/regenerated_image_1778592615753.png" 
+                  alt="CREA Logo" 
                   className="w-full h-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                   referrerPolicy="no-referrer"
                 />
@@ -37,7 +33,8 @@ export default function Authority() {
             <div className="flex flex-col items-center text-center group">
               <div className="w-28 h-28 md:w-36 md:h-36 bg-white rounded-full flex items-center justify-center mb-3 border border-gray-100 group-hover:border-brand-navy transition-all duration-500 p-6 shadow-sm group-hover:shadow-md overflow-hidden">
                 <img 
-                 src={abntLogo} alt="ABNT Logo"
+                  src="/src/assets/images/regenerated_image_1778592616938.png" 
+                  alt="ABNT Logo" 
                   className="w-full h-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                   referrerPolicy="no-referrer"
                 />
@@ -49,7 +46,8 @@ export default function Authority() {
             <div className="flex flex-col items-center text-center group">
               <div className="w-28 h-28 md:w-36 md:h-36 bg-white rounded-full flex items-center justify-center mb-3 border border-gray-100 group-hover:border-brand-navy transition-all duration-500 p-4 shadow-sm group-hover:shadow-md overflow-hidden">
                 <img 
-                   src={nr12Logo} alt="NR12 Logo" 
+                  src="/src/assets/images/regenerated_image_1778592614220.png" 
+                  alt="NR12 Logo" 
                   className="w-full h-auto object-contain transition-transform group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -61,7 +59,8 @@ export default function Authority() {
             <div className="flex flex-col items-center text-center group">
               <div className="w-28 h-28 md:w-36 md:h-36 bg-white rounded-full flex items-center justify-center mb-3 border border-gray-100 group-hover:border-brand-navy transition-all duration-500 p-6 shadow-sm group-hover:shadow-md overflow-hidden">
                 <img 
-                  src={engLogo} alt="Eng Logo"
+                  src="/src/assets/images/regenerated_image_1778592615201.png" 
+                  alt="Industrial Engineering Logo" 
                   className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                   referrerPolicy="no-referrer"
                 />

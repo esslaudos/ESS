@@ -51,7 +51,7 @@ export default function Footer() {
                 </div>
               </div>
               <a 
-                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um especialista.')}
+                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 group"

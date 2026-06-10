@@ -25,69 +25,82 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <nav className={cn(
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      isScrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
-    )}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight text-apple-text">
-          ESS <span className="font-light">Laudos</span>
-        </Link>
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-sm font-medium hover:text-brand-navy transition-colors">Home</Link>
-          
-          <div 
-            className="relative"
-            onMouseEnter={() => setActiveDropdown(true)}
-            onMouseLeave={() => setActiveDropdown(false)}
-          >
-            <button className="flex items-center space-x-1 text-sm font-medium hover:text-brand-navy transition-colors">
-              <span>Laudos</span>
-              <ChevronDown size={14} className={cn('transition-transform', activeDropdown && 'rotate-180')} />
-            </button>
-            <AnimatePresence>
-              {activeDropdown && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl p-2"
-                >
-                  {services.map((s) => (
-                    <Link
-                      key={s.path}
-                      to={s.path}
-                      className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-apple-grey transition-colors text-sm"
-                    >
-                      <s.icon size={18} className="text-brand-navy" />
-                      <span>{s.name}</span>
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+  return (
+    <>
+      <nav className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        isOpen ? 'bg-transparent' : (isScrolled ? 'glass-nav py-3' : 'bg-transparent py-5')
+      )}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <Link to="/" className="text-xl font-bold tracking-tight text-apple-text">
+            ESS <span className="font-light">Laudos</span>
+          </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-sm font-medium hover:text-brand-navy transition-colors">Home</Link>
+            
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown(true)}
+              onMouseLeave={() => setActiveDropdown(false)}
+            >
+              <button className="flex items-center space-x-1 text-sm font-medium hover:text-brand-navy transition-colors">
+                <span>Laudos</span>
+                <ChevronDown size={14} className={cn('transition-transform', activeDropdown && 'rotate-180')} />
+              </button>
+              <AnimatePresence>
+                {activeDropdown && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl p-2"
+                  >
+                    {services.map((s) => (
+                      <Link
+                        key={s.path}
+                        to={s.path}
+                        className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-apple-grey transition-colors text-sm"
+                      >
+                        <s.icon size={18} className="text-brand-navy" />
+                        <span>{s.name}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link to="/projetos-mecanicos" className="text-sm font-medium hover:text-brand-navy transition-colors">Projetos Mecânicos</Link>
+            <Link to="/projeto-estrutural" className="text-sm font-medium hover:text-brand-navy transition-colors">Projeto Estrutural</Link>
+            <a 
+              href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apple-button-primary !py-2 !px-5 text-sm"
+            >
+              Contato
+            </a>
           </div>
 
-          <Link to="/projetos-mecanicos" className="text-sm font-medium hover:text-brand-navy transition-colors">Projetos Mecânicos</Link>
-          <Link to="/projeto-estrutural" className="text-sm font-medium hover:text-brand-navy transition-colors">Projeto Estrutural</Link>
-          <a 
-            href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um especialista.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="apple-button-primary !py-2 !px-5 text-sm"
-          >
-            Contato
-          </a>
+          {/* Mobile Menu Toggle */}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X /> : <Menu />}
+          </button>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
-        </button>
-      </div>
+      </nav>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
@@ -97,7 +110,8 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-white md:hidden pt-24 px-6"
+            className="fixed inset-0 z-40 bg-white md:hidden pt-24 px-6 h-screen w-screen overflow-y-auto"
+            style={{ backgroundColor: '#FFFFFF', opacity: 1 }}
           >
             <div className="flex flex-col space-y-6">
               <Link to="/" onClick={() => setIsOpen(false)} className="text-2xl font-semibold">Home</Link>
@@ -118,11 +132,11 @@ export default function Navigation() {
               <Link to="/projetos-mecanicos" onClick={() => setIsOpen(false)} className="text-2xl font-semibold">Projetos Mecânicos</Link>
               <Link to="/projeto-estrutural" onClick={() => setIsOpen(false)} className="text-2xl font-semibold">Projeto Estrutural</Link>
               <a 
-                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um especialista.')}
+                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)} 
-                className="apple-button-primary text-center"
+                className="apple-button-primary flex items-center justify-center text-center w-full"
               >
                 Falar com Especialista
               </a>
@@ -130,6 +144,6 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }

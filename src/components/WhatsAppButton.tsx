@@ -5,7 +5,7 @@ import { CONTACT_INFO } from '../constants/contact';
 export default function WhatsAppButton() {
   return (
     <motion.a
-      href={CONTACT_INFO.whatsappLink('Olá, gostaria de saber mais sobre os serviços da V-TEC.')}
+      href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
