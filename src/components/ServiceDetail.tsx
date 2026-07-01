@@ -28,6 +28,19 @@ export default function ServiceDetail({ title, subtitle, description, image, ben
           >
             {title}
           </motion.h1>
+          {title === "Laudo NR-12" && (
+            <div className="text-brand-navy dark:text-brand-navy font-semibold my-4 text-base md:text-lg flex items-center gap-1.5 flex-wrap">
+              <span>📍 Atendemos Franca e região. Agende uma visita clicando</span>{' '}
+              <a 
+                href={CONTACT_INFO.whatsappLink('Olá, gostaria de falar com um engenheiro especialista')} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="underline text-brand-blue font-bold hover:opacity-80 transition-opacity"
+              >
+                aqui
+              </a>.
+            </div>
+          )}
           <p className="text-lg md:text-xl text-gray-500 font-light max-w-2xl">{subtitle}</p>
         </div>
       </div>
